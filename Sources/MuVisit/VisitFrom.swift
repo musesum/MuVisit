@@ -17,13 +17,13 @@ public struct VisitFrom: OptionSet {
     public init(rawValue: Int = 0) { self.rawValue = rawValue }
 
     static public var debugDescriptions: [(Self, String)] = [
-        (.bind   , "bind"  ),
-        (.model  , "model" ),
-        (.canvas , "canvas"),
-        (.user   , "user"  ),
-        (.remote , "remote"),
-        (.remote , "midi"  ),
-        (.tween  , "tween" ),
+        (.bind   , "bind"  ),   // parsing in progress
+        (.model  , "model" ),   // a non-user update
+        (.canvas , "canvas"),   // user touched a non-menu canvas
+        (.user   , "user"  ),   // a user gesture
+        (.remote , "remote"),   // from a remote device
+        (.remote , "midi"  ),   // from a midi device
+        (.tween  , "tween" ),   // from an animataion
     ]
     static public var logDescriptions: [(Self, String)] = [
         (.bind   , "􁀘"),
