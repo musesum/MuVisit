@@ -76,8 +76,9 @@ public class Visitor {
         lock.lock()
         if blocked == nil {
             blocked = Blocked([id])
+        } else {
+            blocked?.append(id)
         }
-        blocked?.append(id)
         lock.unlock()
     }
     public func nowHeres(_ ids: [Int?]) {
@@ -88,6 +89,12 @@ public class Visitor {
             }
         }
         lock.unlock()
+    }
+    public func isBlocked(_ id: Int) ->  Bool {
+        lock.lock()
+        let blocking = blocked?.contains(id) ?? false
+        lock.unlock()
+        return blocking
     }
     public func wasHere(_ id: Int) -> Bool {
         lock.lock()
